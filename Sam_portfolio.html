@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Alemu – Portfolio</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #0a192f;
+            color: #ccd6f6;
+            overflow-x: hidden;
+        padding-top: 60px; /* offset for fixed nav */
+        }
+        a {
+            color: #64ffda;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        /* Hero section */
+        .hero {
+            background-image: url('86c94421-15d6-4c05-8067-ab24ff4ad0de.png');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            position: relative;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #64ffda;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+        }
+        /* Section styles */
+        section {
+            padding: 3rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #64ffda;
+            text-align: center;
+        }
+        .education, .experience, .projects, .skills {
+            margin-bottom: 3rem;
+        }
+        /* Education */
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+        .education-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .education-item span {
+            font-style: italic;
+            color: #8892b0;
+        }
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .skills-grid ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        .skills-grid li::before {
+            content: "\2022";
+            color: #64ffda;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        /* Experience */
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+        .experience-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .experience-item span {
+            font-style: italic;
+            color: #8892b0;
+        }
+        .experience-item ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+        .experience-item li::before {
+            content: "\2022";
+            color: #64ffda;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background-color: #112240;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+        .project-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+        .project-card a {
+            font-size: 0.9rem;
+            color: #64ffda;
+        }
+        /* Footer */
+        footer {
+            background-color: #0a192f;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #112240;
+        }
+        footer p {
+            margin-bottom: 0.6rem;
+        }
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Navigation bar styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #0a192f;
+            border-bottom: 1px solid #112240;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        .navbar ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            justify-content: center;
+            width: 100%;
+        }
+        .navbar li a {
+            color: #ccd6f6;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+        .navbar li a:hover {
+            color: #64ffda;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar for smooth scrolling between sections -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#summary">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Samuel Alemu</h1>
+            <p>Aspiring software engineer driven to build scalable, data-driven systems that empower better decisions.</p>
+        </div>
+    </header>
+    
+    <section id="summary" class="summary">
+        <h2>Summary</h2>
+        <p>Growing up in a low-resource environment shaped a deep understanding of how critical access to the right information can be. From personal struggles with health, hygiene, and learning—due to lack of guidance and data-driven awareness—I’ve come to value the impact technology can have when it helps people make better decisions. Palantir’s mission to empower institutions with data to protect the vulnerable aligns with my core purpose. I want to be part of building tools that ensure no one is left behind simply because the data wasn't accessible or understood.</p>
+    </section>
+    
+    <section id="education" class="education">
+        <h2>Education</h2>
+        <div class="education-item">
+            <h3>Georgia State University</h3>
+            <span>Bachelor of Science in Computer Science (Expected May 2026)</span>
+            <p>GPA: 3.89 / 4.00</p>
+            <p>Relevant coursework: Software Engineering, Web Programming, Data Structures & Algorithms, Database Systems, Mobile App Development</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div>
+                <h3>Languages</h3>
+                <ul>
+                    <li>Java (strong)</li>
+                    <li>Python</li>
+                    <li>C</li>
+                    <li>JavaScript</li>
+                    <li>SQL</li>
+                    <li>HTML/CSS</li>
+                    <li>PHP</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Frameworks & Libraries</h3>
+                <ul>
+                    <li>Spring Boot</li>
+                    <li>Hibernate (JPA)</li>
+                    <li>Node.js</li>
+                    <li>React</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Tools & Platforms</h3>
+                <ul>
+                    <li>Unix/Linux</li>
+                    <li>Git & GitHub</li>
+                    <li>Docker (basic)</li>
+                    <li>Command Line</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Databases</h3>
+                <ul>
+                    <li>MySQL</li>
+                    <li>PostgreSQL (familiar)</li>
+                    <li>Firebase Realtime DB</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Concepts & Methodologies</h3>
+                <ul>
+                    <li>Object‑Oriented Programming (OOP)</li>
+                    <li>MVC & RESTful APIs</li>
+                    <li>Agile / Scrum</li>
+                    <li>Unit Testing (JUnit)</li>
+                    <li>CI/CD (intro)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Problem Solving</li>
+                    <li>Collaboration</li>
+                    <li>Adaptability</li>
+                    <li>Fast Learner</li>
+                    <li>Attention to Detail</li>
+                    <li>Ownership Mindset</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <h2>Experience</h2>
+        <div class="experience-item">
+            <h3>Java Programming Assistant (Peer Role) – Georgia State University</h3>
+            <span>Aug 2022 – Jan 2023, Atlanta, GA</span>
+            <ul>
+                <li>Supported students in mastering Java and object‑oriented programming concepts such as inheritance, polymorphism and interfaces.</li>
+                <li>Debugged assignments and guided backend logic using best‑practice design principles and version control with Git.</li>
+                <li>Promoted collaborative coding standards in classroom environments.</li>
+            </ul>
+        </div>
+        <div class="experience-item">
+            <h3>Research Assistant – Georgia State University</h3>
+            <span>Aug 2022 – Jan 2023, Atlanta, GA</span>
+            <ul>
+                <li>Analyzed 250+ user responses with Python and Matplotlib to study AI explainability and trust perception.</li>
+                <li>Collaborated with faculty to improve user interfaces based on data trends, guiding transparency‑focused design proposals.</li>
+                <li>Supported TensorFlow model evaluation and presented findings influencing design metrics.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Interactive Image Ranking App</h3>
+                <p>Built a browser‑based image comparison tool using the Elo rating algorithm to dynamically rank user‑submitted images. Designed a responsive UI with real‑time updates, event‑driven logic and modal overlays to enhance user experience and demonstrate front‑end state management.</p>
+                <a href="https://samiz244.github.io/comparison-game/" target="_blank">View Website</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Finance Manager App</h3>
+                <p>Developed a mobile app for tracking expenses, income and savings goals. Implemented a dynamic dashboard for real‑time financial visualization and integrated Firebase for authentication and persistent storage. Emphasized modular UI design and component‑based logic for maintainability.</p>
+                <a href="https://github.com/gkstl119/personal-finance-management" target="_blank">View on GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <h3>Employee Management System</h3>
+                <p>Designed and implemented a backend system managing 50+ employee records with robust CRUD operations for hiring, salary updates and terminations. Built normalized MySQL schemas integrated via JDBC and visualized using DBeaver. Maintained code using JUnit tests and Agile versioned branches.</p>
+                <a href="https://github.com/NahomAbera/Employee-Management-System" target="_blank">View on GitHub</a>
+            </div>
+            <div class="project-card">
+                <h3>Share Arts Platform</h3>
+                <p>Created a full‑stack web application enabling artists to upload, tag and share artwork. Developed RESTful APIs in Node.js with MySQL for data management and integrated Google OAuth for secure login. Implemented real‑time notifications and tagging using Google APIs.</p>
+                <a href="https://github.com/Samiz244/ShareArts" target="_blank">View on GitHub</a>
+            </div>
+           
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p><strong>Contact</strong></p>
+        <p>Email: <a href="mailto:szalemu3@gmail.com">szalemu3@gmail.com</a> | Phone: <a href="tel:+14707960475">+1 (470) 796‑0475</a></p>
+        <p>GitHub: <a href="https://github.com/Samiz244" target="_blank">github.com/Samiz244</a></p>
+        <p>&copy; 2025 Samuel Alemu. Inspired by Palantir’s mission to augment human intelligence and solve hard problems.</p>
+    </footer>
+</body>
+</html>
